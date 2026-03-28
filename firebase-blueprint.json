@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user-specific information and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "User's display name" },
+        "email": { "type": "string", "description": "User's email address" },
+        "photoURL": { "type": "string", "description": "User's profile picture URL" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation timestamp" }
+      },
+      "required": ["uid", "email"]
+    },
+    "DetectionRecord": {
+      "title": "Detection Record",
+      "description": "Stores details of a crop disease detection event.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique record ID" },
+        "userId": { "type": "string", "description": "UID of the user who performed the detection" },
+        "imageUrl": { "type": "string", "description": "Base64 or URL of the leaf image" },
+        "cropName": { "type": "string", "description": "Detected crop name" },
+        "diseaseName": { "type": "string", "description": "Detected disease name" },
+        "confidence": { "type": "number", "description": "Confidence score of the detection" },
+        "treatment": { "type": "string", "description": "Suggested treatment or advice" },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the detection occurred" }
+      },
+      "required": ["userId", "diseaseName", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/detections/{detectionId}": {
+      "schema": "DetectionRecord",
+      "description": "Crop disease detection history"
+    }
+  }
+}

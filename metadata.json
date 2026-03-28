@@ -1,0 +1,5 @@
+{
+  "name": "AgroGuard AI",
+  "description": "AI-powered crop disease detection and treatment advisor with multi-language support (English & Malayalam).",
+  "requestFramePermissions": ["camera", "geolocation"]
+}
